@@ -9,7 +9,6 @@ export function forkFactory(filePath: string, messageHandler: IForkedProcessMess
   const stderrConsole = new Console(process.stderr)
   const stdoutConsole = new Console(process.stdout)
 
-  forkedProcess.send({})
   forkedProcess.on('message', (msg: ICompilerMessage) => {
     messageHandler(msg, stdoutConsole, stderrConsole)
   })

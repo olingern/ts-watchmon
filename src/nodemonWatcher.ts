@@ -22,11 +22,8 @@ function handleRestart() {
  * @param script
  * @param ext
  */
-export function appService(nodemonInstance: any, script: string, ext: string) {
-  nodemonInstance({
-    script,
-    ext
-  })
+export function appService(nodemonInstance: any, ext: string) {
+  nodemonInstance({ ext })
     .on(NODEMON_EVENTS.START, handleStart)
     .on(NODEMON_EVENTS.RESTART, handleRestart)
     .on(NODEMON_EVENTS.QUIT, handleQuit)

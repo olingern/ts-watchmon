@@ -1,14 +1,13 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.forkFactory = void 0;
-var childProcess = require("child_process");
-var console_1 = require("console");
+const childProcess = require("child_process");
+const console_1 = require("console");
 function forkFactory(filePath, messageHandler) {
-    var forkedProcess = childProcess.fork(filePath);
-    var stderrConsole = new console_1.Console(process.stderr);
-    var stdoutConsole = new console_1.Console(process.stdout);
-    forkedProcess.send({});
-    forkedProcess.on('message', function (msg) {
+    const forkedProcess = childProcess.fork(filePath);
+    const stderrConsole = new console_1.Console(process.stderr);
+    const stdoutConsole = new console_1.Console(process.stdout);
+    forkedProcess.on('message', (msg) => {
         messageHandler(msg, stdoutConsole, stderrConsole);
     });
     return forkedProcess;
