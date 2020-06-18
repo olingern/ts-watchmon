@@ -1,0 +1,25 @@
+{
+  "name": "trip-app-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "watch-ts": "./bin/watch-ts.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "tsc -w --project ./src --outDir ./dist2"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^13.7.7",
+    "@types/nodemon": "^1.19.0",
+    "nodemon": "^2.0.2",
+    "typescript": "^3.8.3"
+  },
+  "project": {
+    "tsDir": "./test",
+    "compiledEntry": "./test/app.js"
+  }
+}

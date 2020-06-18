@@ -1,0 +1,6 @@
+{
+    "ext": "js",
+    "delay": 0,
+    "exec": "node ./test/app.js",
+    "watch": "./test/**/*"
+}
