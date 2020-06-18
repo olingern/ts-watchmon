@@ -87,7 +87,7 @@ export function watchTypescript(tsDirToWatch: string): void {
   }
   const origPostProgramCreate = host.afterProgramCreate
 
-  host.afterProgramCreate = program => {
+  host.afterProgramCreate = (program) => {
     sendParentMessage('Compilation finished')
     origPostProgramCreate && origPostProgramCreate(program)
   }
