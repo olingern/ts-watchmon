@@ -7,7 +7,7 @@
     "ts-watchmon": "./bin/ts-watchmon.js"
   },
   "scripts": {
-    "build": "tsc -w --project ./src --outDir ./dist"
+    "build": "tsc -w --project . --outDir ./dist"
   },
   "author": "Nick Olinger <olingern@gmail.com>",
   "license": "MIT",
