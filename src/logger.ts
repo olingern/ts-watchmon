@@ -1,8 +1,10 @@
+import * as chalk from "chalk"
+
 export const logger = {
   error: function (msg: string): void {
-    console.error(msg)
+    console.log(`${chalk.red("❌")} ${msg}`)
   },
-  info: function (msg: string): void {
-    console.log(msg)
+  success: function (msg: string): void {
+    console.log(`${chalk.green("✔️")}  ${msg}`)
   }
 }

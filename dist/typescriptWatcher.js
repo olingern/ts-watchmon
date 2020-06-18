@@ -46,7 +46,7 @@ function watchTypescript(tsDirToWatch) {
         return origCreateProgram(rootNames, options, host, oldProgram);
     };
     const origPostProgramCreate = host.afterProgramCreate;
-    host.afterProgramCreate = program => {
+    host.afterProgramCreate = (program) => {
         sendParentMessage('Compilation finished');
         origPostProgramCreate && origPostProgramCreate(program);
     };
@@ -59,11 +59,11 @@ function reportDiagnostic(diagnostic) {
     }
     const file = diagnostic.file;
     if (!file.lineMap) {
-        throw new Error('File does not have lineMap property');
+        return;
     }
     const line = searchLineMap(file.lineMap, diagnostic.start);
     if (!line) {
-        throw new Error('Could not find line of error');
+        return;
     }
     sendParentErrorMessage(diagnostic.file.fileName, line, diagnostic.code, ts.flattenDiagnosticMessageText(diagnostic.messageText, formatHost.getNewLine()));
 }

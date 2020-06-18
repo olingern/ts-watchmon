@@ -4,24 +4,29 @@ import { forkFactory } from './fork'
 import { appService } from './nodemonWatcher'
 import { typescriptCompilerMessageHandler } from './typescriptWatcher'
 import { logger } from './logger'
+import { getPkgJsonPath } from './common'
 
 import { existsSync } from 'fs'
+import { ERRORS } from './errors'
 
 // Validate package.json existence
 try {
-  if (existsSync('./package.json')) {
+  if (existsSync(getPkgJsonPath())) {
     //file exists
-    logger.info('package.json found')
+    logger.success('package.json found')
   }
 } catch (e) {
   logger.error(e)
+  process.exit(1)
 }
 
-const pkg = require('./package.json')
+
+const pkg = require(getPkgJsonPath())
 
 // Validate package.json project properties
-if (!pkg.project || !pkg.project.tsDir || !pkg.project.entry) {
-  logger.error('package.json project section is not filled out correct. See the docs')
+if (!pkg.project || !pkg.project.tsDir) {
+  logger.error(ERRORS.INVALID_PACKAGE_JSON)
+  process.exit(1)
 }
 
 try {

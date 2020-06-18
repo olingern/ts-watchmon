@@ -1,6 +1,6 @@
 {
   "name": "ts-watchmon",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "main": "index.js",
   "bin": {
@@ -13,6 +13,7 @@
   "author": "Nick Olinger <olingern@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "chalk": "^4.1.0",
     "nodemon": "^2.0.2",
     "typescript": "^3.8.3"
   },

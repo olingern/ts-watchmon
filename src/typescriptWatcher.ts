@@ -107,13 +107,15 @@ function reportDiagnostic(diagnostic: ts.Diagnostic): void {
   const file: IExtendedSourceFile = diagnostic.file
 
   if (!file.lineMap) {
-    throw new Error('File does not have lineMap property')
+    // TODO: Determine what to do here.
+    // In the result 
+    return;
   }
 
   const line = searchLineMap(file.lineMap, diagnostic.start)
 
   if (!line) {
-    throw new Error('Could not find line of error')
+    return;
   }
 
   sendParentErrorMessage(
